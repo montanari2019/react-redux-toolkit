@@ -1,0 +1,1 @@
+export const baseURLFetch = "http://192.168.20.24:3333/api/"
