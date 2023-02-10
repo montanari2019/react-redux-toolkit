@@ -1,121 +1,35 @@
-import style from "./render.module.css"
+import { useAppSelector } from "../../redux/store/hook";
+import style from "./render.module.css";
 
 export function RenderEmpresa() {
-    return (
+  const { empresas, cod_select_empresa } = useAppSelector(
+    (state) => state.mparkLoad
+  );
 
-        <div className={style.contianer}>
-            <div className={style.card}>
+  const selectEmpresa = empresas.find((e) => e.id === cod_select_empresa);
+  return (
+    <div className={style.contianer}>
+      {!!selectEmpresa && (
+        <div className={style.card}>
+          <h4>{selectEmpresa.nome}</h4>
+          <br />
 
-                <h4>NOme fila</h4>
-                <br />
+          <div className={style.cardItem}>
+            <strong>Descricao</strong>
+            <span>{selectEmpresa.descricao}</span>
+          </div>
 
-                <div className={style.cardItem}>
-                    <strong>Senhas marcadas</strong>
-                    <span>25</span>
-                </div>
+          <div className={style.cardItem}>
+            <strong>Estado</strong>
+            <span>{selectEmpresa.estado}</span>
+          </div>
 
-                <div className={style.cardItem}>
-                    <strong>Aguardando Liberação</strong>
-                    <span>25</span>
-                </div>
-
-                <div className={style.cardItem}>
-                    <strong>Aguardando Retirada</strong>
-                    <span>25</span>
-                </div>
-
-                <div className={style.cardItem}>
-                    <strong>Notas entregues</strong>
-                    <span>25</span>
-                </div>
-
-
-            </div>
-
-            <div className={style.card}>
-
-                <h4>NOme fila</h4>
-                <br />
-
-                <div className={style.cardItem}>
-                    <strong>Senhas marcadas</strong>
-                    <span>25</span>
-                </div>
-
-                <div className={style.cardItem}>
-                    <strong>Aguardando Liberação</strong>
-                    <span>25</span>
-                </div>
-
-                <div className={style.cardItem}>
-                    <strong>Aguardando Retirada</strong>
-                    <span>25</span>
-                </div>
-
-                <div className={style.cardItem}>
-                    <strong>Notas entregues</strong>
-                    <span>25</span>
-                </div>
-
-
-            </div>
-
-
-            <div className={style.card}>
-
-                <h4>NOme fila</h4>
-                <br />
-
-                <div className={style.cardItem}>
-                    <strong>Senhas marcadas</strong>
-                    <span>25</span>
-                </div>
-
-                <div className={style.cardItem}>
-                    <strong>Aguardando Liberação</strong>
-                    <span>25</span>
-                </div>
-
-                <div className={style.cardItem}>
-                    <strong>Aguardando Retirada</strong>
-                    <span>25</span>
-                </div>
-
-                <div className={style.cardItem}>
-                    <strong>Notas entregues</strong>
-                    <span>25</span>
-                </div>
-
-
-            </div>
-
-            <div className={style.card}>
-
-                <h4>NOme fila</h4>
-                <br />
-
-                <div className={style.cardItem}>
-                    <strong>Senhas marcadas</strong>
-                    <span>25</span>
-                </div>
-
-                <div className={style.cardItem}>
-                    <strong>Aguardando Liberação</strong>
-                    <span>25</span>
-                </div>
-
-                <div className={style.cardItem}>
-                    <strong>Aguardando Retirada</strong>
-                    <span>25</span>
-                </div>
-
-                <div className={style.cardItem}>
-                    <strong>Notas entregues</strong>
-                    <span>25</span>
-                </div>
-
-
-            </div>
+          <div className={style.cardItem}>
+            <strong>Cidade</strong>
+            <span>{selectEmpresa.municipio}</span>
+          </div>
         </div>
-    )
+      )}
+    </div>
+  );
 }
